@@ -1,0 +1,65 @@
+/** {
+  border: 1px solid red;
+}*/
+body {
+  font-family: 'Open Sans', sans-serif;
+  display: flex;
+  margin: 0;
+}
+/*body:after {
+  clear: both;
+  content: "";
+  display: block;
+}*/
+
+#input-section {
+  background: #455A64;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+}
+
+h1 {
+  font-size: 250%;
+  color: white;
+  margin: 0;
+}
+
+.main-header {
+  width: 96%;
+  margin: 5px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+img {
+  width: 65px;
+  height: 65px;
+}
+
+#bookmark-section {
+  background: #CFD8DC;
+  width: 50%;
+  height: 100vh;
+}
+
+/*MEDIA SCREEN STYLING*/
+@media screen and (max-width: 550px) {
+  body {
+    display: block;
+  }
+  #bookmark-section, #input-section {
+    width: 100%;
+  }
+  .main-header {
+    align-items: flex-start;
+  }
+  h1 {
+    font-size: 200%;
+  }
+  img {
+    height: 45px;
+    width: 45px;
+  }
+}
