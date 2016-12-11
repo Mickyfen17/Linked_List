@@ -56,6 +56,7 @@ img {
 #enter-button:hover {
   background: #FFD773;
 }
+
 /*BOOKMARK SECTION STYLING*/
 .bookmark-section {
   background: #CFD8DC;
@@ -119,6 +120,8 @@ img {
   float: right;
   margin-top: 5px;
 }
+
+
 /*MEDIA SCREEN STYLING*/
 @media screen and (max-width: 550px) {
   body {
