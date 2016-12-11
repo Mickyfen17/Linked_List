@@ -43,7 +43,10 @@ img {
 .website-detail-inputs input {
   display: block;
   width: 295px;
-  margin: 5px auto;
+  margin: 35px auto;
+  height: 28px;
+  font-size: 20px;
+  padding-left: 5px;
 }
 
 #enter-button {
@@ -52,6 +55,12 @@ img {
   font-weight: 800;
   border: none;
   width: 304px;
+  height: 28px;
+  font-size: 16px;
+}
+
+
+
 }
 #enter-button:hover {
   background: #FFD773;
