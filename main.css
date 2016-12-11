@@ -12,6 +12,7 @@ body {
   display: block;
 }*/
 
+/*INPUT SECTION STYLING*/
 #input-section {
   background: #455A64;
   width: 50%;
@@ -19,30 +20,107 @@ body {
   display: flex;
 }
 
-#bookmark-section {
-  background: #CFD8DC;
-  width: 50%;
-  height: 100vh;
-}
-
 .main-header {
   width: 96%;
-  margin: 5px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 50%;
+  margin: auto;
+  display: block;
+  text-align: center;
 }
 
 h1 {
   font-size: 250%;
   color: white;
   margin: 0;
+  display: inline-block;
 }
 
 img {
   width: 65px;
-  height: 65px;
+  height: 35px;
 }
+
+.website-detail-inputs input {
+  display: block;
+  width: 295px;
+  margin: 5px auto;
+}
+
+#enter-button {
+  color: #FFF;
+  background: #FFC107;
+  font-weight: 800;
+  border: none;
+  width: 304px;
+}
+#enter-button:hover {
+  background: #FFD773;
+}
+
+/*BOOKMARK SECTION STYLING*/
+.bookmark-section {
+  background: #CFD8DC;
+  width: 50%;
+  height: 100vh;
+}
+
+.bookmarks {
+  border: 2px solid #607D8B;
+  width: 90%;
+  margin: 20px auto;
+  background-color: #FFF;
+}
+
+.bookmark-title {
+  color: #455A64;
+  font-size: 1.6em;
+  margin: 0 auto;
+  padding: 8px 0;
+  width: 95%;
+}
+
+.bookmark-url {
+  margin: 0 auto;
+  padding: 18px 0;
+  width: 95%;
+  font-size: 1.2em;
+  font-weight: 400;
+  border-bottom: 1px solid #CFD8DC;
+  border-top: 1px solid #CFD8DC;
+
+}
+.bookmark-url a {
+  color: #607D8B;
+  border-bottom: 1px solid #F2F4F4;
+  text-decoration: none;
+}
+.bookmark-url a:hover, .delete-button:hover, .read-button:hover {
+  color: #455A64;
+  border-bottom: 1px solid #FFC107;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.read-delete-btns-cont {
+  width: 95%;
+  margin: 4px auto 8px auto;
+}
+
+.delete-button, .read-button {
+  font-size: 0.8em;
+  color: #455A64;
+  background: transparent;
+  padding: 0;
+  border: none;
+  border-bottom: 1px solid #F2F4F4;
+  cursor: pointer;
+}
+
+.delete-button {
+  float: right;
+  margin-top: 5px;
+}
+
 
 /*MEDIA SCREEN STYLING*/
 @media screen and (max-width: 550px) {
