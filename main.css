@@ -27,23 +27,33 @@ body {
 
 .main-header {
   width: 96%;
-  margin: 5px auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 50%;
+  margin: auto;
+  display: block;
+  text-align: center;
 }
 
 h1 {
   font-size: 250%;
   color: white;
   margin: 0;
+  display: inline-block;
 }
 
 img {
   width: 65px;
-  height: 65px;
+  height: 35px;
 }
 
+.website-detail-inputs input {
+  display: block;
+  width: 295px;
+  margin: 5px auto;
+}
+
+#enter-button {
+  width: 304px;
+}
 /*MEDIA SCREEN STYLING*/
 @media screen and (max-width: 550px) {
   body {
