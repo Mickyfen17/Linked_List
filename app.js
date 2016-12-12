@@ -24,12 +24,7 @@ enterButton.addEventListener("click", function() {
   console.log(userBookmarkData[0], userBookmarkData[1]);
 });
 
-// readButton.addEventListener("click", function() {
-//   readButton.addclass("read");
-// });
-
 function createBookmarkDiv() {
-  // create div with classname bookmarks
   newDiv = document.createElement("div");
   newDiv.className += "bookmarks";
   createBookmarkTitle();
@@ -41,7 +36,6 @@ function createBookmarkTitle() {
   newH3.appendChild(inputTitleTextNode);
   createBookmarkURL();
 }
-
 function createBookmarkURL() {
   newH4 = document.createElement("h4");
   newH4.className += "bookmark-url";
@@ -65,7 +59,17 @@ function createReadButton() {
   newReadBtn.className += "read-button";
   var readButtonText = document.createTextNode("Read");
   newReadBtn.appendChild(readButtonText);
+  newReadBtn.addEventListener("click", function() {
+    readBtnClassToggle();
+  });
   createDeleteButton();
+}
+function readBtnClassToggle() {
+  if(newReadBtn.classList.contains("read")) {
+    newReadBtn.classList.remove("read");
+  } else {
+    newReadBtn.classList.add("read");
+  }
 }
 function createDeleteButton() {
   newDeleteBtn = document.createElement("button");
