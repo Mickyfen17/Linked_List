@@ -71,6 +71,7 @@ img {
   background: #CFD8DC;
   width: 50%;
   height: 100vh;
+  overflow: auto;
 }
 
 .bookmarks {
@@ -130,6 +131,11 @@ img {
   margin-top: 5px;
 }
 
+.read {
+  text-decoration: none;
+  font-weight: 800;
+  color: #F05A28;
+}
 
 /*MEDIA SCREEN STYLING*/
 @media screen and (max-width: 550px) {
@@ -139,8 +145,15 @@ img {
   .bookmark-section, #input-section {
     width: 100%;
   }
+  #input-section {
+    height: 40vh;
+  }
+  .bookmark-section {
+    height: 60vh;
+    overflow: auto;
+  }
   .main-header {
-    align-items: flex-start;
+    margin: 20px auto;
   }
   h1 {
     font-size: 200%;
