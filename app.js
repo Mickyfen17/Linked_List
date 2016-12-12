@@ -2,6 +2,7 @@ var inputTitle = document.getElementById("website-title");
 var inputURL = document.getElementById("website-url");
 var enterButton = document.getElementById("enter-button");
 var bookmarkSection = document.querySelector(".bookmark-section");
+var readButton = document.querySelector(".read-button");
 var newDiv;
 var newH3;
 var newH4;
@@ -22,6 +23,10 @@ enterButton.addEventListener("click", function() {
   createBookmarkDiv();
   console.log(userBookmarkData[0], userBookmarkData[1]);
 });
+
+// readButton.addEventListener("click", function() {
+//   readButton.addclass("read");
+// });
 
 function createBookmarkDiv() {
   // create div with classname bookmarks
