@@ -1,6 +1,6 @@
-/** {
-  border: 1px solid red;
-}*/
+*:focus {
+  outline: none;
+}
 body {
   font-family: 'Open Sans', sans-serif;
   display: flex;
