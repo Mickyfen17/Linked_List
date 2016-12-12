@@ -60,15 +60,15 @@ function createReadButton() {
   var readButtonText = document.createTextNode("Read");
   newReadBtn.appendChild(readButtonText);
   newReadBtn.addEventListener("click", function() {
-    readBtnClassToggle();
+    readBtnClassToggle(this);
   });
   createDeleteButton();
 }
-function readBtnClassToggle() {
-  if(newReadBtn.classList.contains("read")) {
-    newReadBtn.classList.remove("read");
+function readBtnClassToggle(btn) {
+  if(btn.classList.contains("read")) {
+    btn.classList.remove("read");
   } else {
-    newReadBtn.classList.add("read");
+    btn.classList.add("read");
   }
 }
 function createDeleteButton() {
@@ -76,6 +76,10 @@ function createDeleteButton() {
   newDeleteBtn.className += "delete-button";
   var deleteButtonText = document.createTextNode("Delete");
   newDeleteBtn.appendChild(deleteButtonText);
+  newDeleteBtn.addEventListener("click", function(e) {
+    var bookmarkCard = this.parentNode.parentNode;
+    bookmarkCard.remove();
+  });
   appendData();
 }
 function appendData() {
