@@ -136,7 +136,7 @@ img {
   body {
     display: block;
   }
-  #bookmark-section, #input-section {
+  .bookmark-section, #input-section {
     width: 100%;
   }
   .main-header {
