@@ -3,6 +3,7 @@ var inputURL = document.getElementById("website-url");
 var enterButton = document.getElementById("enter-button");
 var bookmarkSection = document.querySelector(".bookmark-section");
 var readButton = document.querySelector(".read-button");
+var errorText = document.querySelector(".error-text");
 var newDiv;
 var newH3;
 var newH4;
@@ -23,6 +24,7 @@ function clearInputs() {
   inputTitle.value = "";
   inputURL.value = "";
   enterButton.disabled = true;
+  errorText.innerText = "";
 }
 // Check if input fields have data before enabling Enter button
 function testForEmptyInputs() {
@@ -35,10 +37,12 @@ function testForEmptyInputs() {
 // Throw alert if one box has content and the other is empty upon Enter click
 function alertError() {
   if(inputTitle.value.length > 2 && inputURL.value.length === 0) {
-    alert("Please enter a valid URL");
+    // alert("Please enter a valid URL");
+    errorText.innerText = "Please Enter A Valid URL";
     throw new Error("Please enter a valid URL");
   } else if (inputURL.value.length > 2 && inputTitle.value.length === 0) {
-    alert("Please enter a valid Website Title");
+    // alert("Please enter a valid Website Title");
+    errorText.innerText = "Please Enter A Valid Website Title";
     throw new Error("Please enter a valid Website Title");
   }
 }
@@ -81,9 +85,9 @@ function createBookmarkURL() {
 // Create a tag and website link with user data and append to h4
 function createHREF() {
   newATag = document.createElement("a");
-  var inputURLTextNOde = document.createTextNode(userBookmarkData[1]);
+  var inputURLTextNode = document.createTextNode(userBookmarkData[1]);
   newATag.href = "http://" + userBookmarkData[1];
-  newATag.appendChild(inputURLTextNOde);
+  newATag.appendChild(inputURLTextNode);
   newH4.appendChild(newATag);
   createButtonDiv();
 }
