@@ -143,6 +143,9 @@ img {
   border-bottom: none;
 }
 
+.bookmarkRead {
+  background: #F2F4F4;
+}
 
 /*MEDIA SCREEN STYLING*/
 @media screen and (max-width: 550px) {
