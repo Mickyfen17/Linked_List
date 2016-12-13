@@ -18,9 +18,15 @@ function grabUserData() {
   userBookmarkData = [inputTitleValue, inputURLValue];
 }
 
+function clearInputs() {
+  inputTitle.value = "";
+  inputURL.value = "";
+}
+
 enterButton.addEventListener("click", function() {
   grabUserData();
   createBookmarkDiv();
+  clearInputs();
   console.log(userBookmarkData[0], userBookmarkData[1]);
 });
 
@@ -76,7 +82,7 @@ function createDeleteButton() {
   newDeleteBtn.className += "delete-button";
   var deleteButtonText = document.createTextNode("Delete");
   newDeleteBtn.appendChild(deleteButtonText);
-  newDeleteBtn.addEventListener("click", function(e) {
+  newDeleteBtn.addEventListener("click", function() {
     var bookmarkCard = this.parentNode.parentNode;
     bookmarkCard.remove();
   });
