@@ -1,3 +1,4 @@
+/*Remove focus border from all input and buttons*/
 *:focus {
   outline: none;
 }
@@ -6,11 +7,6 @@ body {
   display: flex;
   margin: 0;
 }
-/*body:after {
-  clear: both;
-  content: "";
-  display: block;
-}*/
 
 /*INPUT SECTION STYLING*/
 #input-section {
@@ -68,6 +64,12 @@ img {
   background: #FFD773;
   cursor: default;
 }
+
+.error-text {
+  color: #f15a49;
+  font-weight: 800;
+}
+
 /*BOOKMARK SECTION STYLING*/
 .bookmark-section {
   background: #CFD8DC;
@@ -101,6 +103,7 @@ img {
   border-top: 1px solid #CFD8DC;
 
 }
+
 .bookmark-url a {
   color: #607D8B;
   border-bottom: 1px solid #F2F4F4;
@@ -140,6 +143,7 @@ img {
   border-bottom: none;
 }
 
+
 /*MEDIA SCREEN STYLING*/
 @media screen and (max-width: 550px) {
   body {
@@ -164,5 +168,19 @@ img {
   img {
     height: 25px;
     width: 45px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .website-detail-inputs input {
+    width: 250px;
+  }
+  #enter-button {
+    width: 260px;
+  }
+  h1 {
+    font-size: 210%;
+  }
+  img {
+    height: 35px;
   }
 }
