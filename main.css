@@ -43,6 +43,7 @@ img {
 .website-detail-inputs input {
   display: block;
   width: 295px;
+  border: none;
   margin: 35px auto;
   height: 28px;
   font-size: 20px;
@@ -57,15 +58,16 @@ img {
   width: 304px;
   height: 28px;
   font-size: 16px;
+  cursor: pointer;
 }
 
-
-
-}
 #enter-button:hover {
   background: #FFD773;
 }
-
+#enter-button:disabled {
+  background: #FFD773;
+  cursor: default;
+}
 /*BOOKMARK SECTION STYLING*/
 .bookmark-section {
   background: #CFD8DC;
@@ -135,6 +137,7 @@ img {
   text-decoration: none;
   font-weight: 800;
   color: #F05A28;
+  border-bottom: none;
 }
 
 /*MEDIA SCREEN STYLING*/
