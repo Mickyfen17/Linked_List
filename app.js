@@ -21,8 +21,20 @@ function grabUserData() {
 function clearInputs() {
   inputTitle.value = "";
   inputURL.value = "";
+  enterButton.disabled = true;
 }
 
+function testForEmptyInputs() {
+  if(inputTitle.value.length > 1 && inputURL.value.length > 1) {
+    enterButton.disabled = false;
+  }
+}
+inputTitle.addEventListener("keyup", function() {
+  testForEmptyInputs();
+});
+inputURL.addEventListener("keyup", function() {
+  testForEmptyInputs();
+});
 enterButton.addEventListener("click", function() {
   grabUserData();
   createBookmarkDiv();
