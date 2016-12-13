@@ -26,8 +26,10 @@ function clearInputs() {
 }
 // Check if input fields have data before enabling Enter button
 function testForEmptyInputs() {
-  if(inputTitle.value.length > 1 && inputURL.value.length > 1) {
+  if(inputTitle.value.length > 2 || inputURL.value.length > 2) {
     enterButton.disabled = false;
+  } else {
+    enterButton.disabled = true;
   }
 }
 // Event listeners for typing in input fields
