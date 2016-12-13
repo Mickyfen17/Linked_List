@@ -32,6 +32,16 @@ function testForEmptyInputs() {
     enterButton.disabled = true;
   }
 }
+// Throw alert if one box has content and the other is empty upon Enter click
+function alertError() {
+  if(inputTitle.value.length > 2 && inputURL.value.length === 0) {
+    alert("Please enter a valid URL");
+    throw new Error("Please enter a valid URL");
+  } else if (inputURL.value.length > 2 && inputTitle.value.length === 0) {
+    alert("Please enter a valid Website Title");
+    throw new Error("Please enter a valid Website Title");
+  }
+}
 // Event listeners for typing in input fields
 inputTitle.addEventListener("keyup", function() {
   testForEmptyInputs();
@@ -41,6 +51,7 @@ inputURL.addEventListener("keyup", function() {
 });
 // Event listener for Enter button
 enterButton.addEventListener("click", function() {
+  alertError();
   grabUserData();
   createBookmarkDiv();
   clearInputs();
