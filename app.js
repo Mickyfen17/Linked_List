@@ -12,29 +12,32 @@ var newReadBtn;
 var newDeleteBtn;
 var userBookmarkData = [];
 
+// Grab all user data from input fields
 function grabUserData() {
   var inputTitleValue = inputTitle.value;
   var inputURLValue = inputURL.value;
   userBookmarkData = [inputTitleValue, inputURLValue];
 }
-
+// Clear input fields and disable Enter button
 function clearInputs() {
   inputTitle.value = "";
   inputURL.value = "";
   enterButton.disabled = true;
 }
-
+// Check if input fields have data before enabling Enter button
 function testForEmptyInputs() {
   if(inputTitle.value.length > 1 && inputURL.value.length > 1) {
     enterButton.disabled = false;
   }
 }
+// Event listeners for typing in input fields
 inputTitle.addEventListener("keyup", function() {
   testForEmptyInputs();
 });
 inputURL.addEventListener("keyup", function() {
   testForEmptyInputs();
 });
+// Event listener for Enter button
 enterButton.addEventListener("click", function() {
   grabUserData();
   createBookmarkDiv();
@@ -42,11 +45,13 @@ enterButton.addEventListener("click", function() {
   console.log(userBookmarkData[0], userBookmarkData[1]);
 });
 
+// Create main outer div bookmark
 function createBookmarkDiv() {
   newDiv = document.createElement("div");
   newDiv.className += "bookmarks";
   createBookmarkTitle();
 }
+// Create bookmark title and append user input data
 function createBookmarkTitle() {
   newH3 = document.createElement("h3");
   newH3.className += "bookmark-title";
@@ -54,11 +59,13 @@ function createBookmarkTitle() {
   newH3.appendChild(inputTitleTextNode);
   createBookmarkURL();
 }
+// Create h4 to store a tag and website link
 function createBookmarkURL() {
   newH4 = document.createElement("h4");
   newH4.className += "bookmark-url";
   createHREF();
 }
+// Create a tag and website link with user data and append to h4
 function createHREF() {
   newATag = document.createElement("a");
   var inputURLTextNOde = document.createTextNode(userBookmarkData[1]);
@@ -67,11 +74,13 @@ function createHREF() {
   newH4.appendChild(newATag);
   createButtonDiv();
 }
+// Create div to house Read and Delete buttons
 function createButtonDiv() {
   newBtnDiv = document.createElement("div");
   newBtnDiv.className += "read-delete-btns-cont";
   createReadButton();
 }
+// Create Read button and add Eventlistener
 function createReadButton() {
   newReadBtn = document.createElement("button");
   newReadBtn.className += "read-button";
@@ -82,6 +91,7 @@ function createReadButton() {
   });
   createDeleteButton();
 }
+// Function to add or remove read class
 function readBtnClassToggle(btn) {
   if(btn.classList.contains("read")) {
     btn.classList.remove("read");
@@ -89,6 +99,7 @@ function readBtnClassToggle(btn) {
     btn.classList.add("read");
   }
 }
+// Create Delete button and add eventlistener
 function createDeleteButton() {
   newDeleteBtn = document.createElement("button");
   newDeleteBtn.className += "delete-button";
@@ -100,6 +111,7 @@ function createDeleteButton() {
   });
   appendData();
 }
+// Append all data to outer Div bookmark and append to bookamrk section in DOM
 function appendData() {
   newDiv.appendChild(newH3);
   newDiv.appendChild(newH4);
