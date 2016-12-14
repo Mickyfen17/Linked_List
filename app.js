@@ -3,6 +3,10 @@ var inputURL = document.getElementById("website-url");
 var enterButton = document.getElementById("enter-button");
 var bookmarkSection = document.querySelector(".bookmark-section");
 var errorText = document.querySelector(".error-text");
+var inputs = document.querySelectorAll("input");
+var bookmarksOnPage = document.querySelector(".bookmarks-on-page span");
+var bookmarksRead = document.querySelector(".bookmarks-read span");
+var bookmarksToRead = document.querySelector(".bookmarks-to-read span");
 var newDiv;
 var newH3;
 var newH4;
@@ -11,10 +15,6 @@ var newBtnDiv;
 var newReadBtn;
 var newDeleteBtn;
 var userBookmarkData = [];
-var inputs = document.querySelectorAll("input");
-var bookmarksOnPage = document.querySelector(".bookmarks-on-page span");
-var bookmarksRead = document.querySelector(".bookmarks-read span");
-var bookmarksToRead = document.querySelector(".bookmarks-to-read span");
 
 // Grab all user data from input fields
 function grabUserData() {
