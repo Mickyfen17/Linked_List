@@ -15,6 +15,7 @@ var newATag;
 var newBtnDiv;
 var newReadBtn;
 var newDeleteBtn;
+var allReadBookmarks;
 var userBookmarkData = [];
 
 // Function to loop through all bookamrks with class as read and remove
@@ -26,11 +27,13 @@ function removeAllRead(readArray) {
     bookmarksOnPage.innerText --;
   });
 }
+
 // Event listener to clear all read bookmarks
 clearReadButton.addEventListener("click", function() {
-  var allReadBookmarks = document.querySelectorAll(".read");
   removeAllRead(allReadBookmarks);
   bookmarksToReadCalc();
+  allReadBookmarks = document.querySelectorAll(".read");
+  toggleClearAllButton();
 });
 
 // Grab all user data from input fields
@@ -46,6 +49,15 @@ function clearInputs() {
   enterButton.disabled = true;
   errorText.innerText = "";
 }
+// Toggle clear all button
+function toggleClearAllButton() {
+  if(allReadBookmarks.length === 0) {
+    clearReadButton.disabled = true;
+  } else {
+    clearReadButton.disabled = false;
+  }
+}
+
 // Check if input fields have data before enabling Enter button
 function testForEmptyInputs() {
   if(inputTitle.value.length > 2 || inputURL.value.length > 2) {
@@ -64,14 +76,6 @@ function alertError() {
     throw new Error("Please enter a valid Website Title");
   }
 }
-
-// Event listeners for typing in input fields
-// inputs.addEventListener("keyup", function() {
-//   testForEmptyInputs();
-// });
-// inputURL.addEventListener("keyup", function() {
-//   testForEmptyInputs();
-// });
 
 // For each loop to add Event listeners for typing in input fields
 inputs.forEach(function(button) {
@@ -130,6 +134,8 @@ function createReadButton() {
   newReadBtn.innerText = "Read";
   newReadBtn.addEventListener("click", function() {
     bookmarkClassToggle(this);
+    allReadBookmarks = document.querySelectorAll(".read");
+    toggleClearAllButton();
   });
   createDeleteButton();
 }
@@ -158,9 +164,12 @@ function createDeleteButton() {
     var bookmarkCard = this.parentNode.parentNode;
     bookmarkCard.remove();
     deleteCounter(this);
+    allReadBookmarks = document.querySelectorAll(".read");
+    toggleClearAllButton();
   });
   appendData();
 }
+
 function deleteCounter(btn) {
   if(btn.previousSibling.classList.contains("read")) {
     bookmarksRead.innerText --;
@@ -172,6 +181,7 @@ function deleteCounter(btn) {
   }
 }
 
+// Function to calculate the to read content on the page
 function bookmarksToReadCalc() {
   var toRead = (parseInt(bookmarksOnPage.innerText) - parseInt(bookmarksRead.innerText));
   bookmarksToRead.innerText = toRead;
