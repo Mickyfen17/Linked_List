@@ -2,6 +2,7 @@
 *:focus {
   outline: none;
 }
+/*Body styling*/
 body {
   font-family: 'Open Sans', sans-serif;
   display: flex;
@@ -46,13 +47,14 @@ img {
   display: block;
   width: 295px;
   border: none;
-  margin: 30px auto;
+  margin: 25px auto;
   height: 28px;
   font-size: 20px;
   padding-left: 5px;
 }
 
-#enter-button {
+#enter-button, #clear-all {
+  margin-bottom: 8px;
   color: #FFF;
   background: #FFC107;
   font-weight: 800;
@@ -62,11 +64,10 @@ img {
   font-size: 16px;
   cursor: pointer;
 }
-
-#enter-button:hover {
+#enter-button:hover, #clear-all:hover {
   background: #FFD773;
 }
-#enter-button:disabled {
+#enter-button:disabled, #clear-all:disabled {
   background: #FFD773;
   cursor: default;
 }
@@ -74,6 +75,7 @@ img {
 .error-text {
   color: #f15a49;
   font-weight: 800;
+  margin: 0;
 }
 
 /*BOOKMARK SECTION STYLING*/
@@ -142,6 +144,7 @@ img {
   margin-top: 5px;
 }
 
+/*Class to toggle in JS*/
 .read {
   text-decoration: none;
   font-weight: 800;
@@ -154,7 +157,7 @@ img {
 }
 
 /*MEDIA SCREEN STYLING*/
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 545px) {
   body {
     display: block;
   }
@@ -162,10 +165,10 @@ img {
     width: 100%;
   }
   #input-section {
-    height: 45vh;
+    height: 48vh;
   }
   .bookmark-section {
-    height: 55vh;
+    height: 52vh;
     overflow: auto;
   }
   .main-header {
@@ -186,7 +189,7 @@ img {
   .website-detail-inputs input {
     width: 250px;
   }
-  #enter-button {
+  #enter-button, #clear-all {
     width: 260px;
   }
   h1 {
