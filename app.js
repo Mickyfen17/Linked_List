@@ -2,7 +2,6 @@ var inputTitle = document.getElementById("website-title");
 var inputURL = document.getElementById("website-url");
 var enterButton = document.getElementById("enter-button");
 var bookmarkSection = document.querySelector(".bookmark-section");
-var readButton = document.querySelector(".read-button");
 var errorText = document.querySelector(".error-text");
 var newDiv;
 var newH3;
@@ -12,6 +11,7 @@ var newBtnDiv;
 var newReadBtn;
 var newDeleteBtn;
 var userBookmarkData = [];
+var inputs = document.querySelectorAll("input");
 
 // Grab all user data from input fields
 function grabUserData() {
@@ -44,13 +44,22 @@ function alertError() {
     throw new Error("Please enter a valid Website Title");
   }
 }
+
 // Event listeners for typing in input fields
-inputTitle.addEventListener("keyup", function() {
-  testForEmptyInputs();
+// inputs.addEventListener("keyup", function() {
+//   testForEmptyInputs();
+// });
+// inputURL.addEventListener("keyup", function() {
+//   testForEmptyInputs();
+// });
+
+// For each loop to add Event listeners for typing in input fields
+inputs.forEach(function(button) {
+  button.addEventListener("keyup", function() {
+    testForEmptyInputs();
+  });
 });
-inputURL.addEventListener("keyup", function() {
-  testForEmptyInputs();
-});
+
 // Event listener for Enter button
 enterButton.addEventListener("click", function() {
   alertError();
@@ -69,8 +78,7 @@ function createBookmarkDiv() {
 function createBookmarkTitle() {
   newH3 = document.createElement("h3");
   newH3.classList.add("bookmark-title");
-  var inputTitleTextNode = document.createTextNode(userBookmarkData[0]);
-  newH3.appendChild(inputTitleTextNode);
+  newH3.innerText = userBookmarkData[0];
   createBookmarkURL();
 }
 // Create h4 to store a tag and website link
@@ -82,9 +90,8 @@ function createBookmarkURL() {
 // Create a tag and website link with user data and append to h4
 function createHREF() {
   newATag = document.createElement("a");
-  var inputURLTextNode = document.createTextNode(userBookmarkData[1]);
   newATag.href = "http://" + userBookmarkData[1];
-  newATag.appendChild(inputURLTextNode);
+  newATag.innerText = userBookmarkData[1];
   newH4.appendChild(newATag);
   createButtonDiv();
 }
@@ -98,8 +105,7 @@ function createButtonDiv() {
 function createReadButton() {
   newReadBtn = document.createElement("button");
   newReadBtn.classList.add("read-button");
-  var readButtonText = document.createTextNode("Read");
-  newReadBtn.appendChild(readButtonText);
+  newReadBtn.innerText = "Read";
   newReadBtn.addEventListener("click", function() {
     bookmarkClassToggle(this);
   });
@@ -120,8 +126,7 @@ function bookmarkClassToggle(btn) {
 function createDeleteButton() {
   newDeleteBtn = document.createElement("button");
   newDeleteBtn.classList.add("delete-button");
-  var deleteButtonText = document.createTextNode("Delete");
-  newDeleteBtn.appendChild(deleteButtonText);
+  newDeleteBtn.innerText = "Delete";
   newDeleteBtn.addEventListener("click", function() {
     var bookmarkCard = this.parentNode.parentNode;
     bookmarkCard.remove();
