@@ -3,10 +3,11 @@ var inputURL = document.getElementById("website-url");
 var enterButton = document.getElementById("enter-button");
 var bookmarkSection = document.querySelector(".bookmark-section");
 var errorText = document.querySelector(".error-text");
-var inputs = document.querySelectorAll("input");
 var bookmarksOnPage = document.querySelector(".bookmarks-on-page span");
 var bookmarksRead = document.querySelector(".bookmarks-read span");
 var bookmarksToRead = document.querySelector(".bookmarks-to-read span");
+var clearReadButton = document.getElementById("clear-all");
+var inputs = document.querySelectorAll("input");
 var newDiv;
 var newH3;
 var newH4;
@@ -15,6 +16,22 @@ var newBtnDiv;
 var newReadBtn;
 var newDeleteBtn;
 var userBookmarkData = [];
+
+// Function to loop through all bookamrks with class as read and remove
+function removeAllRead(readArray) {
+  var readToRemove = readArray.length;
+  readArray.forEach(function(readBookmark) {
+    readBookmark.parentNode.parentNode.remove();
+    bookmarksRead.innerText --;
+    bookmarksOnPage.innerText --;
+  });
+}
+// Event listener to clear all read bookmarks
+clearReadButton.addEventListener("click", function() {
+  var allReadBookmarks = document.querySelectorAll(".read");
+  removeAllRead(allReadBookmarks);
+  bookmarksToReadCalc();
+});
 
 // Grab all user data from input fields
 function grabUserData() {
