@@ -53,7 +53,8 @@ img {
   padding-left: 5px;
 }
 
-#enter-button, #clear-all {
+#enter-button,
+#clear-all {
   margin-bottom: 8px;
   color: #FFF;
   background: #FFC107;
@@ -64,10 +65,12 @@ img {
   font-size: 16px;
   cursor: pointer;
 }
-#enter-button:hover, #clear-all:hover {
+#enter-button:hover,
+#clear-all:hover {
   background: #FFD773;
 }
-#enter-button:disabled, #clear-all:disabled {
+#enter-button:disabled,
+#clear-all:disabled {
   background: #FFD773;
   cursor: default;
 }
@@ -117,7 +120,9 @@ img {
   border-bottom: 1px solid #F2F4F4;
   text-decoration: none;
 }
-.bookmark-url a:hover, .delete-button:hover, .read-button:hover {
+.bookmark-url a:hover,
+.delete-button:hover,
+.read-button:hover {
   color: #455A64;
   border-bottom: 1px solid #FFC107;
   font-weight: 800;
@@ -129,7 +134,8 @@ img {
   margin: 4px auto 8px auto;
 }
 
-.delete-button, .read-button {
+.delete-button,
+.read-button {
   font-size: 0.8em;
   color: #455A64;
   background: transparent;
@@ -161,7 +167,8 @@ img {
   body {
     display: block;
   }
-  .bookmark-section, #input-section {
+  .bookmark-section,
+  #input-section {
     width: 100%;
   }
   #input-section {
@@ -189,7 +196,8 @@ img {
   .website-detail-inputs input {
     width: 250px;
   }
-  #enter-button, #clear-all {
+  #enter-button,
+  #clear-all {
     width: 260px;
   }
   h1 {
