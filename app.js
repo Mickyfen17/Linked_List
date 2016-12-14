@@ -12,6 +12,9 @@ var newReadBtn;
 var newDeleteBtn;
 var userBookmarkData = [];
 var inputs = document.querySelectorAll("input");
+var bookmarksOnPage = document.querySelector(".bookmarks-on-page span");
+var bookmarksRead = document.querySelector(".bookmarks-read span");
+var bookmarksToRead = document.querySelector(".bookmarks-to-read span");
 
 // Grab all user data from input fields
 function grabUserData() {
@@ -66,6 +69,8 @@ enterButton.addEventListener("click", function() {
   grabUserData();
   createBookmarkDiv();
   clearInputs();
+  bookmarksOnPage.innerText ++;
+  bookmarksToReadCalc();
 });
 
 // Create main outer div bookmark
@@ -117,11 +122,16 @@ function bookmarkClassToggle(btn) {
   if(btn.classList.contains("read")) {
     btn.classList.remove("read");
     bookmarkCard.classList.remove("bookmarkRead");
+    bookmarksRead.innerText --;
+    bookmarksToReadCalc();
   } else {
     btn.classList.add("read");
     bookmarkCard.classList.add("bookmarkRead");
+    bookmarksRead.innerText ++;
+    bookmarksToReadCalc();
   }
 }
+
 // Create Delete button and add eventlistener
 function createDeleteButton() {
   newDeleteBtn = document.createElement("button");
@@ -130,8 +140,24 @@ function createDeleteButton() {
   newDeleteBtn.addEventListener("click", function() {
     var bookmarkCard = this.parentNode.parentNode;
     bookmarkCard.remove();
+    deleteCounter(this);
   });
   appendData();
+}
+function deleteCounter(btn) {
+  if(btn.previousSibling.classList.contains("read")) {
+    bookmarksRead.innerText --;
+    bookmarksOnPage.innerText --;
+    bookmarksToReadCalc();
+  } else {
+    bookmarksOnPage.innerText --;
+    bookmarksToReadCalc();
+  }
+}
+
+function bookmarksToReadCalc() {
+  var toRead = (parseInt(bookmarksOnPage.innerText) - parseInt(bookmarksRead.innerText));
+  bookmarksToRead.innerText = toRead;
 }
 // Append all data to outer Div bookmark and append to bookamrk section in DOM
 function appendData() {
