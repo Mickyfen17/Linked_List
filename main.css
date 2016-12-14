@@ -207,3 +207,8 @@ img {
     height: 35px;
   }
 }
+@media screen and (min-width: 1250px) {
+  .main-header {
+    width: 50%;
+  }
+}
