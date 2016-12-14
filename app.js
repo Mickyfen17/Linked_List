@@ -18,64 +18,7 @@ var newDeleteBtn;
 var allReadBookmarks;
 var userBookmarkData = [];
 
-// Function to loop through all bookamrks with class as read and remove
-function removeAllRead(readArray) {
-  var readToRemove = readArray.length;
-  readArray.forEach(function(readBookmark) {
-    readBookmark.parentNode.parentNode.remove();
-    bookmarksRead.innerText --;
-    bookmarksOnPage.innerText --;
-  });
-}
-
-// Event listener to clear all read bookmarks
-clearReadButton.addEventListener("click", function() {
-  removeAllRead(allReadBookmarks);
-  bookmarksToReadCalc();
-  allReadBookmarks = document.querySelectorAll(".read");
-  toggleClearAllButton();
-});
-
-// Grab all user data from input fields
-function grabUserData() {
-  var inputTitleValue = inputTitle.value;
-  var inputURLValue = inputURL.value;
-  userBookmarkData = [inputTitleValue, inputURLValue];
-}
-// Clear input fields and disable Enter button
-function clearInputs() {
-  inputTitle.value = "";
-  inputURL.value = "";
-  enterButton.disabled = true;
-  errorText.innerText = "";
-}
-// Toggle clear all button
-function toggleClearAllButton() {
-  if(allReadBookmarks.length === 0) {
-    clearReadButton.disabled = true;
-  } else {
-    clearReadButton.disabled = false;
-  }
-}
-
-// Check if input fields have data before enabling Enter button
-function testForEmptyInputs() {
-  if(inputTitle.value.length > 2 || inputURL.value.length > 2) {
-    enterButton.disabled = false;
-  } else {
-    enterButton.disabled = true;
-  }
-}
-// Throw alert if one box has content and the other is empty upon Enter click
-function alertError() {
-  if(inputTitle.value.length > 2 && inputURL.value.length === 0) {
-    errorText.innerText = "Please Enter A Valid URL";
-    throw new Error("Please enter a valid URL");
-  } else if (inputURL.value.length > 2 && inputTitle.value.length === 0) {
-    errorText.innerText = "Please Enter A Valid Website Title";
-    throw new Error("Please enter a valid Website Title");
-  }
-}
+// EVENT LISTENERS
 
 // For each loop to add Event listeners for typing in input fields
 inputs.forEach(function(button) {
@@ -93,6 +36,107 @@ enterButton.addEventListener("click", function() {
   bookmarksOnPage.innerText ++;
   bookmarksToReadCalc();
 });
+
+// Event listener to clear all read bookmarks
+clearReadButton.addEventListener("click", function() {
+  removeAllRead(allReadBookmarks);
+  bookmarksToReadCalc();
+  allReadBookmarks = document.querySelectorAll(".read");
+  toggleClearAllButton();
+});
+
+
+// HELPER FUNCTIONS
+
+// Grab all user data from input fields
+function grabUserData() {
+  var inputTitleValue = inputTitle.value;
+  var inputURLValue = inputURL.value;
+  userBookmarkData = [inputTitleValue, inputURLValue];
+}
+
+// Function using this from delete button to change the bookmarks and bookmarks read counter
+function deleteCounter(btn) {
+  if(btn.previousSibling.classList.contains("read")) {
+    bookmarksRead.innerText --;
+    bookmarksOnPage.innerText --;
+    bookmarksToReadCalc();
+  } else {
+    bookmarksOnPage.innerText --;
+    bookmarksToReadCalc();
+  }
+}
+
+// Function to calculate the to read content on the page
+function bookmarksToReadCalc() {
+  var toRead = (parseInt(bookmarksOnPage.innerText) - parseInt(bookmarksRead.innerText));
+  bookmarksToRead.innerText = toRead;
+}
+
+// Function to add or remove read class
+function bookmarkClassToggle(btn) {
+  var bookmarkCard = btn.parentNode.parentNode;
+  if(btn.classList.contains("read")) {
+    btn.classList.remove("read");
+    bookmarkCard.classList.remove("bookmarkRead");
+    bookmarksRead.innerText --;
+    bookmarksToReadCalc();
+  } else {
+    btn.classList.add("read");
+    bookmarkCard.classList.add("bookmarkRead");
+    bookmarksRead.innerText ++;
+    bookmarksToReadCalc();
+  }
+}
+
+// Function to Toggle clear all bookmark button
+function toggleClearAllButton() {
+  if(allReadBookmarks.length === 0) {
+    clearReadButton.disabled = true;
+  } else {
+    clearReadButton.disabled = false;
+  }
+}
+
+// Function to loop through all bookamrks with class as read and remove
+function removeAllRead(readArray) {
+  var readToRemove = readArray.length;
+  readArray.forEach(function(readBookmark) {
+    readBookmark.parentNode.parentNode.remove();
+    bookmarksRead.innerText --;
+    bookmarksOnPage.innerText --;
+  });
+}
+
+// Clear input fields and disable Enter button
+function clearInputs() {
+  inputTitle.value = "";
+  inputURL.value = "";
+  enterButton.disabled = true;
+  errorText.innerText = "";
+}
+
+// Check if input fields have data before enabling Enter button
+function testForEmptyInputs() {
+  if(inputTitle.value.length > 2 || inputURL.value.length > 2) {
+    enterButton.disabled = false;
+  } else {
+    enterButton.disabled = true;
+  }
+}
+
+// Throw alert if one box has content and the other is empty upon Enter click
+function alertError() {
+  if(inputTitle.value.length > 2 && inputURL.value.length === 0) {
+    errorText.innerText = "Please Enter A Valid URL";
+    throw new Error("Please enter a valid URL");
+  } else if (inputURL.value.length > 2 && inputTitle.value.length === 0) {
+    errorText.innerText = "Please Enter A Valid Website Title";
+    throw new Error("Please enter a valid Website Title");
+  }
+}
+
+// APPEND ALL DATA TO BOOKMARK
 
 // Create main outer div bookmark
 function createBookmarkDiv() {
@@ -139,22 +183,6 @@ function createReadButton() {
   });
   createDeleteButton();
 }
-// Function to add or remove read class
-function bookmarkClassToggle(btn) {
-  var bookmarkCard = btn.parentNode.parentNode;
-  if(btn.classList.contains("read")) {
-    btn.classList.remove("read");
-    bookmarkCard.classList.remove("bookmarkRead");
-    bookmarksRead.innerText --;
-    bookmarksToReadCalc();
-  } else {
-    btn.classList.add("read");
-    bookmarkCard.classList.add("bookmarkRead");
-    bookmarksRead.innerText ++;
-    bookmarksToReadCalc();
-  }
-}
-
 // Create Delete button and add eventlistener
 function createDeleteButton() {
   newDeleteBtn = document.createElement("button");
@@ -170,23 +198,7 @@ function createDeleteButton() {
   appendData();
 }
 
-function deleteCounter(btn) {
-  if(btn.previousSibling.classList.contains("read")) {
-    bookmarksRead.innerText --;
-    bookmarksOnPage.innerText --;
-    bookmarksToReadCalc();
-  } else {
-    bookmarksOnPage.innerText --;
-    bookmarksToReadCalc();
-  }
-}
-
-// Function to calculate the to read content on the page
-function bookmarksToReadCalc() {
-  var toRead = (parseInt(bookmarksOnPage.innerText) - parseInt(bookmarksRead.innerText));
-  bookmarksToRead.innerText = toRead;
-}
-// Append all data to outer Div bookmark and append to bookamrk section in DOM
+// APPEND ALL DATA TO THE DOM
 function appendData() {
   newDiv.appendChild(newH3);
   newDiv.appendChild(newH4);
